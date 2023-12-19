@@ -13,8 +13,14 @@ module.exports = {
     current: "currentColor",
     extend: {
       colors: {
+        text: '#0e0506',
+        background: '#fdf6f6',
+        primary: '#cc3949',
+        secondary: '#f18d99',
+        accent: '#f34e61',
+        neutral: '#f7f7f7',
+        indigo2: '#3f51b5',
         // light mode
- 
         tremor: {
           brand: {
             faint: "#eff6ff", // blue-50
@@ -44,7 +50,6 @@ module.exports = {
             inverted: "#ffffff", // white
           },
         },
-        
         // dark mode
         "dark-tremor": {
           brand: {
@@ -75,9 +80,7 @@ module.exports = {
             inverted: "#000000", // black
           },
         },
-        
       },
-      
       boxShadow: {
         // light
         "tremor-input": "0 1px 2px 0 rgb(0 0 0 / 0.05)",

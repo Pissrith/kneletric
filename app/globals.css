@@ -2,26 +2,176 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.text-xxs {
+  font-size: 0.625rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.text-2xs {
+  font-size: 0.425rem;
+}
+
+/* Path: app/components/MyComponent.svelte 
+nav bottom css */
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  max-width: 768px;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.header {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  background-color: hsl(250, 60%, 98%);
+}
+
+.nav {
+  max-width: 968px;
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo,
+.nav__toggle {
+  color: hsl(250, 8%, 15%);
+  font-weight: 700;
+}
+
+.nav__logo:hover {
+  color: hsl(0, 69%, 61%);
+}
+
+.nav__btns {
+  display: flex;
+  align-items: center;
+}
+
+.theme-customization {
+  font-size: 1.25rem;
+  color: hsl(250, 8%, 15%);
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.nav__toggle:hover,
+.theme-customization:hover {
+  color: hsl(0, 69%, 61%);
+}
+
+.nav__toggle {
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .nav__menu {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background-color: hsl(250, 60%, 98%);
+    padding: 0.5rem 4.5rem 1rem;
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 1.2rem 1.2rem 0 0;
+  }
+}
+
+.nav__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.nav__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+  color: hsl(250, 8%, 15%);
+  font-weight: 500;
+}
+
+.nav__link:hover {
+  color: hsl(0, 69%, 61%);
+}
+
+.nav__icon {
+  font-size: 1.2rem;
+}
+
+/* show menu */
+.show-menu {
+  bottom: 0;
+}
+
+@media screen and (max-width: 350px) {
+  .nav__menu {
+    padding: 1rem 0.25rem 2rem;
+  }
+
+  .nav__list {
+    column-gap: 0;
+  }
+}
+
+/* Hide nav */
+@media screen and (min-width: 767px) {
+  .nav {
+    display: none;
+  }
+
+  /* Add other styles for wider screens if needed */
+  .header {
+    top: 0;
+    bottom: initial;
+  }
+
+  .nav {
+    height: 4.5rem;
+    column-gap: 1rem;
+  }
+
+  .nav__icon,
+  .nav__close,
+  .nav__toggle {
+    display: none;
+  }
+
+  .nav__list {
+    display: flex;
+    column-gap: 2rem;
+  }
+
+  .nav__menu {
+    margin-left: auto;
+  }
+
+  .theme-customization {
+    margin: 0;
+  }
 }
