@@ -117,7 +117,9 @@ export default function Home() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [selectedElectricity, setSelectedElectricity] = useState(null);
   const [isDropDownDateOpen, setisDropDownDateOpen] = useState(false);
-  const [selectedShop, setSelectedShop] = useState<Shop | null>(null);
+  const [selectedShop, setSelectedShop] = useState(
+    shops[selectedBuilding][0].value
+  );
   const [isDisabled, setIsDisabled] = useState(true);
   const [editDisabled, setEditDisabled] = useState(true);
 
