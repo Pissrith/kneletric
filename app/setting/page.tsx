@@ -149,8 +149,8 @@ export default function Home() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {Building &&
-                  selectedBuilding.Restaurant.map((restaurant) => (
+                {buildings &&
+                  selectedBuilding?.Restaurant.map((restaurant) => (
                     <TableRow key={restaurant.id}>
                       <TableCell>{restaurant.id}</TableCell>
                       <TableCell>{restaurant.name}</TableCell>
