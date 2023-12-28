@@ -94,9 +94,7 @@ export default function Home() {
       console.error(error);
     } 
   };
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+
   const [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
