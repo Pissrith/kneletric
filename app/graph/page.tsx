@@ -91,17 +91,25 @@ export default function Home() {
 
 useEffect(() => {
   const fetchTotalYearlyBillData = async () => {
+    setLoading(true);
     try {
       const response = await fetch(config.api_path+'/totalyearlybill');
       const data = await response.json();
       setTotalYearlyBillData(data);
     } catch (error) {
       console.error('Error:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
   fetchTotalYearlyBillData();
-}, []);
+}, []); 
+
+if (loading) {
+  return <div>Loading...</div>;
+}
+
 const formatNumber = (number: number) => {
   return new Intl.NumberFormat("th-TH").format(number);
 };
