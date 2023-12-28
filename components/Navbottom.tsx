@@ -3,7 +3,7 @@ import React from "react";
 export default function Navbottom() {
   return (
     <div>
-      <header className="header" id="header">
+      <header className="header" id="">
         <nav className="nav container">
           <a href="#" className="nav__logo">
             Crypticalcoder
