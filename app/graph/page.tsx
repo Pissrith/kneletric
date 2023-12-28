@@ -11,7 +11,7 @@ import DashCardr from "@/components/DashCardr";
 import Nav from "@/components/Nav";
 import Navbottom from "@/components/Navbottom";
 import { NumberInput } from "@tremor/react";
-
+import config from '../../config'
 import Image from "next/image";
 
 type BuildingType = {
@@ -36,7 +36,7 @@ export default function Home() {
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await axios.get("http://localhost:3003/building/");
+      const response = await axios.get(config.api_path+"/building/");
       setBuildings(response.data.building);
     } catch (error) {
       console.error("Error:", error);
@@ -68,7 +68,7 @@ export default function Home() {
 
       try {
         const response = await fetch(
-          `http://localhost:3003/yearlybill/${restaurantId}`
+          config.api_path+`/yearlybill/${restaurantId}`
         );
         const result = await response.json();
         setData(result);
@@ -84,7 +84,7 @@ export default function Home() {
 useEffect(() => {
   const fetchTotalYearlyBillData = async () => {
     try {
-      const response = await fetch('http://localhost:3003/totalyearlybill');
+      const response = await fetch(config.api_path+'/totalyearlybill');
       const data = await response.json();
       setTotalYearlyBillData(data);
     } catch (error) {

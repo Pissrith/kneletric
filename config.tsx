@@ -1,5 +1,4 @@
 const config = {
-    api_path: 'localhost:3003/',
+    api_path: 'https://fine-tan-coyote-tutu.cyclic.app',
 };
-
 export default config;

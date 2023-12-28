@@ -10,7 +10,7 @@ import DashCardr from "@/components/DashCardr";
 import Nav from "@/components/Nav";
 import Navbottom from "@/components/Navbottom";
 import { NumberInput } from "@tremor/react";
-
+import config from '../config'
 type BuildingType = {
   id: number;
   name: string;
@@ -45,7 +45,7 @@ export default function Home() {
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await axios.get("http://localhost:3003/building/");
+      const response = await axios.get(config.api_path+"/building/");
       setBuildings(response.data.building);
     } catch (error) {
       console.error("Error:", error);
@@ -132,7 +132,7 @@ export default function Home() {
       end,
     };
     try {
-      const response = await axios.post("http://localhost:3003/bill/", newBill);
+      const response = await axios.post(config.api_path+"/bill/", newBill);
       await fetchData();
       // Set the selected bill to the new bill
       setSelectedBill(response.data);
