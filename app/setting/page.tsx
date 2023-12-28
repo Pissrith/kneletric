@@ -110,9 +110,9 @@ export default function Home() {
       <Nav />
       {isLoading ? 'Loading...' : (
         <>
-        <div className="flex flex-col  items-center mb-16 lg:mb-0 justify-center bg-background  ">
+        <div className="flex flex-col flex-wrap  items-center mb-16 lg:mb-0 justify-center bg-background  ">
         <div className="w-full max-w-2xl p-4 space-y-6">
-          <div className="bg-white shadow rounded-md p-4 flex">
+          <div className="bg-white shadow rounded-md p-4">
             <div className="mx-2">
               <label
                 htmlFor="buildings"
@@ -134,7 +134,9 @@ export default function Home() {
                 ))}
               </select>
             </div>
-            <Table className="mt-5">
+            <div>
+
+            <Table className="">
               <TableHead>
                 <TableRow>
                   <TableHeaderCell>Restaurant ID</TableHeaderCell>
@@ -159,6 +161,8 @@ export default function Home() {
                   ))}
               </TableBody>
             </Table>
+            </div>
+
             <Transition appear show={isOpen} as={Fragment}>
               <Dialog as="div" className="relative z-10" onClose={closeModal}>
                 <Transition.Child
