@@ -231,7 +231,7 @@ export default function Home() {
           >
             <div className="p-6 flex flex-row items-center justify-between pb-2 pt-2 space-y-0">
               <h3 className="tracking-tight text-background text-xs sm:text-xl md:text-2xl font-medium">
-                อัตราค่าไฟฟ้าตามหน่วยโรงเรียน {sch} บาท/หน่วย
+                หน่วยโรงเรียน {sch} บาท/หน่วย
               </h3>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -270,7 +270,7 @@ export default function Home() {
           >
             <div className="p-6 flex flex-row items-center justify-between pb-2 pt-2 space-y-0">
               <h3 className="tracking-tight text-text text-xs sm:text-xl md:text-2xl font-medium">
-                อัตราค่าไฟฟ้าตามหน่วยโรงเรียน {mea} บาท/หน่วย
+               หน่วยการไฟฟ้า {mea} บาท/หน่วย
               </h3>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
