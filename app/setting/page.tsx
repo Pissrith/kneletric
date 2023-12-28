@@ -87,7 +87,6 @@ export default function Home() {
         throw new Error('An error occurred while updating the restaurant.');
       }
   
-      const updatedRestaurant = await response.json();
       setNewName(''); // Clear the input field
       closeModal();
       window.location.reload();
@@ -100,9 +99,6 @@ export default function Home() {
   }
   const [isOpen, setIsOpen] = useState(false);
 
-  function openModal() {
-    setIsOpen(true);
-  }
   function closeModal() {
     setIsOpen(false);
   }
