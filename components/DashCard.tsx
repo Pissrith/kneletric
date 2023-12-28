@@ -25,9 +25,10 @@ const DashCard: React.FC<DashCardProps> = ({
   const iconClassName = `w-4 h-4 text-white`;
 
   return (
-    <div className={cardClassName} data-v0-t="card">
+    <div className='rounded-lg border bg-primary text-card-foreground shadow-sm' data-v0-t="card">
       <div className="p-6 flex flex-row items-center justify-between pb-2 pt-2 space-y-0">
-        <h3 className={textClassName}>{title}</h3>
+        <h3 className=
+        'tracking-tight text-background text-xs sm:text-xl md:text-2xl font-medium'>{title}</h3>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -38,7 +39,7 @@ const DashCard: React.FC<DashCardProps> = ({
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className={iconClassName}
+          className='w-4 h-4 text-white'
         >
           <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
           <circle cx="12" cy="12" r="3"></circle>
