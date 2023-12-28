@@ -12,8 +12,6 @@ import Nav from "@/components/Nav";
 import Navbottom from "@/components/Navbottom";
 import { NumberInput } from "@tremor/react";
 
-import { LineChartInteractiveExample } from "../../components/LineCharttest";
-import { LineChartInteractiveExample2 } from "../../components/LineCharttest2";
 import Image from "next/image";
 
 type BuildingType = {
