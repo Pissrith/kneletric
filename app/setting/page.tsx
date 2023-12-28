@@ -136,12 +136,12 @@ export default function Home() {
             </div>
             <div>
 
-            <Table className="">
+            <Table className=" md:w-full">
               <TableHead>
                 <TableRow>
-                  <TableHeaderCell>Restaurant ID</TableHeaderCell>
-                  <TableHeaderCell>Restaurant Name</TableHeaderCell>
-                  <TableHeaderCell>ACTION</TableHeaderCell>
+                  <TableHeaderCell> เลขที่</TableHeaderCell>
+                  <TableHeaderCell>ชื่อร้าค้า </TableHeaderCell>
+                  <TableHeaderCell>ตั้งค่า</TableHeaderCell>
                 </TableRow>
               </TableHead>
               <TableBody>
