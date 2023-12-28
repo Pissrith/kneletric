@@ -101,7 +101,10 @@ useEffect(() => {
 
 
 const formatNumber = (number: number) => {
-  return new Intl.NumberFormat("th-TH").format(number);
+  return new Intl.NumberFormat("th-TH", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(number);
 };
 const sumSchool = totalYearlyBillData.reduce((sum, item) => sum + item["คิดตามหน่วยโรงเรียน"], 0);
 const sumMea = totalYearlyBillData.reduce((sum, item) => sum + item["คิดหน่วยการไฟฟ้า"], 0);
@@ -199,11 +202,11 @@ const sumMea = totalYearlyBillData.reduce((sum, item) => sum + item["คิด�
                     onValueChange={(v:any) => setValue(v)}
                     connectNulls={true}
                   />
-                  <p className="text-end">
-                    ยอดรวมตามหน่วยการไฟฟ้า{formatNumber(sumSchool)} บาท
+                  <p className="text-end text-xs md:text-base">
+                    ยอดรวมตามหน่วยการไฟฟ้า<span className="px-1 md:px-2 underline">{formatNumber(sumMea)}</span> บาท
                   </p>
-                  <p className="text-end">
-                    ยอดรวมตามหน่วยโรงเรียน{formatNumber(sumMea)} บาท
+                  <p className="text-end text-xs md:text-base">
+                  ยอดรวมตามหน่วยโรงเรียน<span className="px-1 md:px-2 underline">{formatNumber(sumSchool)}</span> บาท
                   </p>
                 </Card>
               </div>
