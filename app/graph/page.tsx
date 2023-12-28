@@ -94,7 +94,11 @@ useEffect(() => {
 
   fetchTotalYearlyBillData();
 }, []);
-console.log(totalYearlyBillData)
+const formatNumber = (number: number) => {
+  return new Intl.NumberFormat("th-TH").format(number);
+};
+const sumSchool = totalYearlyBillData.reduce((sum, item) => sum + item["คิดตามหน่วยโรงเรียน"], 0);
+const sumMea = totalYearlyBillData.reduce((sum, item) => sum + item["คิดหน่วยการไฟฟ้า"], 0);
   return (
     <div className="bg-background">
       <Nav />
@@ -190,6 +194,10 @@ console.log(totalYearlyBillData)
                     connectNulls={true}
                   />
                   <p className="text-end">
+                    ยอดรวมตามหน่วยการไฟฟ้า {formatNumber(sumSchool)} บาท
+                  </p>
+                  <p className="text-end">
+                    ยอดรวมตามหน่วยโรงเรียน {formatNumber(sumMea)} บาท
                   </p>
                 </Card>
               </div>
