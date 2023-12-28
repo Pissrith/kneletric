@@ -52,7 +52,7 @@ const DashCard: React.FC<DashCardProps> = ({
           {formattedValue}
         </div>
         <p
-          className={`text-background text-xs mt-5  text-end dark:text-gray-400`}
+          className={`text-background text-xs mt-5  text-end `}
         >
           {disclaimer}
         </p>
