@@ -107,8 +107,11 @@ const formatNumber = (number: number) => {
   }).format(number);
 };
 console.log(data)
-const monthsch = data.reduce((sum, item) => sum + item["sch"], 0);
+const monthsch = data.reduce((sum, item) => sum + parseInt(item["คิดตามหน่วยโรงเรียน"]), 0);
+console.log(monthsch)
 const sumSchool = totalYearlyBillData.reduce((sum, item) => sum + item["คิดตามหน่วยโรงเรียน"], 0);
+console.log(sumSchool)
+
 const sumMea = totalYearlyBillData.reduce((sum, item) => sum + item["คิดหน่วยการไฟฟ้า"], 0);
   return (
     <div className="bg-background">
@@ -181,7 +184,7 @@ const sumMea = totalYearlyBillData.reduce((sum, item) => sum + item["คิด�
                     connectNulls={true}
                   />
                    <p className="text-end text-xs md:text-base">
-                    คิดเป็นร้อยละ<span className="px-1 md:px-2 underline">{formatNumber((monthsch)*(sumMea)/100)}</span> บาท
+                    คิดเป็นร้อยละ<span className="px-1 md:px-2 underline">{formatNumber((monthsch)/(sumSchool)*100)}</span> %
                   </p>
                 </Card>
               </div>
