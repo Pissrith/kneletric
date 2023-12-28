@@ -44,7 +44,7 @@ export default function Navbottom() {
                 </Link>
               </li>
               <li className="nav__item">
-                <Link href="/" className="nav__link">
+                <Link href="/setting" className="nav__link">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"

@@ -172,7 +172,6 @@ export default function Home() {
   }
   function openModal() {
     setIsOpen(true);
-    console.log("open");
   }
   function closeValueModal() {
     setIsValueModalOpen(false);

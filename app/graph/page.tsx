@@ -28,6 +28,8 @@ type RestaurantType = {
 
 export default function Home() {
   const [buildings, setBuildings] = useState<BuildingType[]>([]);
+  const [loading, setLoading] = useState(false);
+
   const [selectedBuilding, setSelectedBuilding] = useState<BuildingType | null>(
     null
   );
@@ -63,7 +65,10 @@ export default function Home() {
       const restaurantId = Number(event.target.value);
       const selectedRestaurant = selectedBuilding.Restaurant.find(
         (r) => r.id === restaurantId
+        
       );
+      setLoading(true);
+
       setSelectedRestaurant(selectedRestaurant || null);
 
       try {
@@ -78,6 +83,9 @@ export default function Home() {
     },
     [selectedBuilding]
   );
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   const [totalYearlyBillData, setTotalYearlyBillData] = useState([]);
 

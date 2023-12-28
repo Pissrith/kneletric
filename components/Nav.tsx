@@ -70,7 +70,7 @@ export default function Nav() {
                     Graph
                   </Link>
                   <Link
-                    href="/"
+                    href="/setting"
                     className="hover:text-primary link-hover rounded-lg p-2"
                   >
                     Setting
@@ -134,7 +134,7 @@ export default function Nav() {
               Graph
             </Link>
             <Link
-              href="/"
+              href="/setting"
               className="hover:text-primary block  hover:font-semibold hover:bg-gray-100 text-black rounded-lg p-2"
             >
               Setting
