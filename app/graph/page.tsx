@@ -102,9 +102,9 @@ const sumMea = totalYearlyBillData.reduce((sum, item) => sum + item["คิด�
   return (
     <div className="bg-background">
       <Nav />
-      <div className="flex flex-col items-center mb-16 lg:mb-0 justify-center bg-background dark:bg-gray-900 ">
+      <div className="flex flex-col items-center mb-16 lg:mb-0 justify-center bg-background  ">
         <div className="w-full max-w-2xl p-4 space-y-6">
-          <div className="bg-white dark:bg-gray-800 shadow rounded-md p-4 flex">
+          <div className="bg-white shadow rounded-md p-4 flex">
             <div className="mx-2">
               <label
                 htmlFor="buildings"
@@ -151,7 +151,7 @@ const sumMea = totalYearlyBillData.reduce((sum, item) => sum + item["คิด�
              
             </div>
           </div>
-          <div className="bg-white dark:bg-gray-800 shadow rounded-md p-4">
+          <div className="bg-white  shadow rounded-md p-4">
             <div className="w-full aspect-[2/1]">
               <div>
                 <Card>
@@ -175,7 +175,7 @@ const sumMea = totalYearlyBillData.reduce((sum, item) => sum + item["คิด�
               </div>
             </div>
           </div>
-          <div className="bg-white dark:bg-gray-800 shadow rounded-md p-4 mb-32">
+          <div className="bg-white  shadow rounded-md p-4 mb-32">
             <div className="w-full aspect-[2/1]">
               <div>
               <Card>
@@ -194,10 +194,10 @@ const sumMea = totalYearlyBillData.reduce((sum, item) => sum + item["คิด�
                     connectNulls={true}
                   />
                   <p className="text-end">
-                    ยอดรวมตามหน่วยการไฟฟ้า {formatNumber(sumSchool)} บาท
+                    ยอดรวมตามหน่วยการไฟฟ้า{formatNumber(sumSchool)} บาท
                   </p>
                   <p className="text-end">
-                    ยอดรวมตามหน่วยโรงเรียน {formatNumber(sumMea)} บาท
+                    ยอดรวมตามหน่วยโรงเรียน{formatNumber(sumMea)} บาท
                   </p>
                 </Card>
               </div>

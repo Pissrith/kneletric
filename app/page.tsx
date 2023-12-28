@@ -189,7 +189,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="">
+      <div className="h-screen">
         <Nav />
         <div className="flex justify-between">
           <div className="ml-5  items-center hover:shadow-primary hover:from-[#be123c] hover:to-[#fb7185] hover:shadow-inne hover:shadow-xl hover:scale-105 duration-300 rounded-md bg-accent/30 px-2 py-1 text-xs font-medium text-text ring-1 ring-inset ring-primary/10 motion-safe:hover:scale-110">
@@ -259,7 +259,7 @@ export default function Home() {
                 )}
               </div>
               <p
-                className={`text-background text-xs mt-5  text-end dark:text-gray-400`}
+                className={`text-background text-xs mt-5  text-end `}
               >
                 *ยังไม่รวมค่าบริการไฟฟ้า
               </p>
@@ -298,7 +298,7 @@ export default function Home() {
                 )}
               </div>
               <p
-                className={`text-text text-xs mt-5  text-end dark:text-gray-400`}
+                className={`text-text text-xs mt-5  text-end`}
               >
                 *ยังไม่รวมค่าบริการไฟฟ้า
               </p>
@@ -308,7 +308,7 @@ export default function Home() {
         {/* <Card /> */}
         <div className="grid  md:mb-2 md:gap-4 sm:gap-2 xs:gap-1 grid-cols-2 items-center mx-5">
           <button className="" onClick={openModal}>
-            <div className="border hover:shadow-xl hover:shadow-primary  hover:scale-105 duration-300 hover:from-[#be123c] hover:to-[#fb7185] text-card-foreground  bg-text dark:bg-gray-800 rounded-lg shadow-md shadow-text p-4">
+            <div className="border hover:shadow-xl hover:shadow-primary  hover:scale-105 duration-300 hover:from-[#be123c] hover:to-[#fb7185] text-card-foreground  bg-text  rounded-lg shadow-md shadow-text p-4">
               <div className="flex items-center  justify-center mb-2">
                 <IoStorefrontOutline size="3em" color="white" />
               </div>
@@ -621,7 +621,7 @@ export default function Home() {
             หน่วยการใช้งานไฟฟ้า
           </h3>
           <div className="grid  grid-cols-3 md:items-center mx-5">
-            <div className="  text-card-foreground  dark:bg-gray-800  p-4 md:pt-6 w-full">
+            <div className="  text-card-foreground   p-4 md:pt-6 w-full">
               <h3 className="tracking-tight text-center text-xl sm:text-3xl lg:5xl font-bold  ">
                 {selectedBill?.start ?? 0}
               </h3>
@@ -629,7 +629,7 @@ export default function Home() {
                 หน่วยเริ่ม
               </h3>
             </div>
-            <div className=" text-card-foreground  dark:bg-gray-800  p-4 md:pt-6 w-full">
+            <div className=" text-card-foreground   p-4 md:pt-6 w-full">
               <h3 className="tracking-tight text-center text-xl sm:text-3xl lg:5xl font-bold  ">
                 {selectedBill?.end ?? 0}
               </h3>
@@ -637,7 +637,7 @@ export default function Home() {
                 หน่วยท้าย
               </h3>
             </div>
-            <div className=" text-card-foreground  dark:bg-gray-800  p-4 md:pt-6 w-full">
+            <div className=" text-card-foreground   p-4 md:pt-6 w-full">
               <h3 className="tracking-tight text-center text-xl sm:text-3xl lg:5xl font-bold  ">
                 {(selectedBill?.end ?? 0) - (selectedBill?.start ?? 0)}
               </h3>
