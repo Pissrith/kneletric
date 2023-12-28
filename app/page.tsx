@@ -91,8 +91,8 @@ export default function Home() {
     [selectedRestaurant]
   );
 
-  const [start, setStart] = useState<number>(0);
-  const [end, setEnd] = useState<number>(0);
+  const [start, setStart] = useState<number>();
+  const [end, setEnd] = useState<number>();
   const [sch, setSchool] = useState<number>(selectedBill?.sch ?? 6);
   const [mea, setMea] = useState<number>(selectedBill?.mea ?? 3.14);
 
@@ -118,6 +118,10 @@ export default function Home() {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    if (!start || !end) {
+      alert("Please enter start");
+      return;
+    }
     if (end < start) {
       alert("End must be greater than start");
       return;
@@ -532,11 +536,10 @@ export default function Home() {
                               หน่วยเริ่ม
                             </label>
                             <input
-                              type="number"
+                              type="text"
                               value={start}
                               id="start"
                               className="col-span-2 mr-10 border border-black rounded-lg text-center"
-                              min={selectedBill?.end ?? 0}
                               onChange={handleStartChange}
                             />
                           </div>
@@ -548,11 +551,11 @@ export default function Home() {
 
                             <input
                               id="end"
-                              type="number"
+                              type="text"
                               className="col-span-2 mr-10 border border-black rounded-lg text-center"
                               value={end}
-                              min={0}
                               onChange={handleEndChange}
+
                             />
                           </div>
                           <div className="grid grid-cols-3 mt-2 ">
@@ -563,10 +566,9 @@ export default function Home() {
 
                             <input
                               id="mea"
-                              type="number"
+                              type="text"
                               className="col-span-2 mr-10 border border-black rounded-lg text-center"
                               value={mea}
-                              min={0}
                               defaultValue={3.14}
                               onChange={handleMeaChange}
                             />
@@ -579,12 +581,11 @@ export default function Home() {
 
                             <input
                               id="sch"
-                              type="number"
+                              type="text"
                               className="col-span-2 mr-10 border border-black rounded-lg text-center"
                               value={sch}
-                              min={0}
-                              defaultValue={6}
                               onChange={handleSchChange}
+                              defaultValue={6}
                             />
                           </div>
                         </div>
