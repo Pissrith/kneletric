@@ -58,16 +58,16 @@ export default function Home() {
     useEffect(() => {
       fetchData();
     }, [fetchData]);
-  const [value, setValue] = React.useState(null);
-
-  const handleBuildingChange = useCallback(
-    (event: React.ChangeEvent<HTMLSelectElement>) => {
-      const buildingId = Number(event.target.value);
-      const selectedBuilding = buildings.find((b) => b.id === buildingId);
-      setSelectedBuilding(selectedBuilding || null);
-    },
-    [buildings]
-  );
+    
+    
+    const handleBuildingChange = useCallback(
+      (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const buildingId = Number(event.target.value);
+        const selectedBuilding = buildings.find((b) => b.id === buildingId);
+        setSelectedBuilding(selectedBuilding || null);
+      },
+      [buildings]
+    );
 
   const handleConfirmClick = async () => {
     setIsLoading(true);
