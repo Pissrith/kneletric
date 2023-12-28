@@ -192,7 +192,6 @@ const sumMea = totalYearlyBillData.reduce((sum, item) => sum + item["คิด�
                     yAxisWidth={30}
                     onValueChange={(v:any) => setValue(v)}
                     connectNulls={true}
-                    darkMode={false}
                   />
                   <p className="text-end">
                     ยอดรวมตามหน่วยการไฟฟ้า{formatNumber(sumSchool)} บาท
