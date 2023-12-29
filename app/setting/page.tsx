@@ -7,7 +7,7 @@ import Nav from "@/components/Nav";
 import Navbottom from "@/components/Navbottom";
 import { NumberInput } from "@tremor/react";
 import config from "../../config";
-import Image from "next/image";
+
 import {
   Table,
   TableHead,
@@ -28,7 +28,7 @@ type RestaurantType = {
   Buildingid: number;
 };
 
-export default function Home() {
+const Home = () => {
   const [buildings, setBuildings] = useState<BuildingType[]>([]);
   const [loading, setLoading] = useState(false);
   const [newName, setNewName] = useState("");
@@ -41,58 +41,58 @@ export default function Home() {
   const [selectedRestaurant, setSelectedRestaurant] =
     useState<RestaurantType | null>(null);
 
-    const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-    const fetchData = useCallback(async () => {
-      setIsLoading(true);
-      try {
-        const response = await axios.get(config.api_path + "/building/");
-        setBuildings(response.data.building);
-      } catch (error) {
-        console.error("Error:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    }, []);
-    
-    useEffect(() => {
-      fetchData();
-    }, [fetchData]);
-    
-    
-    const handleBuildingChange = useCallback(
-      (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const buildingId = Number(event.target.value);
-        const selectedBuilding = buildings.find((b) => b.id === buildingId);
-        setSelectedBuilding(selectedBuilding || null);
-      },
-      [buildings]
-    );
+  const fetchData = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      const response = await axios.get(config.api_path + "/building/");
+      setBuildings(response.data.building);
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  const handleBuildingChange = useCallback(
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
+      const buildingId = Number(event.target.value);
+      const selectedBuilding = buildings.find((b) => b.id === buildingId);
+      setSelectedBuilding(selectedBuilding || null);
+    },
+    [buildings]
+  );
 
   const handleConfirmClick = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(config.api_path+'/updaterestaurant', {
-        method: 'POST',
+      const response = await fetch(config.api_path + "/updaterestaurant", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           id: selectedRestaurant?.id,
           name: newName,
         }),
       });
-  
+
       if (!response.ok) {
-        throw new Error('An error occurred while updating the restaurant.');
+        throw new Error("An error occurred while updating the restaurant.");
       }
-  
-      setNewName(''); // Clear the input field
+
+      setNewName(""); // Clear the input field
       closeModal();
+      alert("Restaurant updated successfully!");
       window.location.reload();
     } catch (error) {
       console.error(error);
-    } 
+    }
   };
 
   const [isOpen, setIsOpen] = useState(false);
@@ -105,80 +105,82 @@ export default function Home() {
     setNewName(restaurant.name);
     setIsOpen(true);
   };
+  const handleInfoClick = (restaurant: any) => {
+    setSelectedRestaurant(restaurant);
+    setNewName(restaurant.name);
+    setIsOpen(true);
+  };
   return (
     <div className="bg-background h-screen">
       <Nav />
-      {isLoading ? 'Loading...' : (
+      {isLoading ? (
+        "Loading..."
+      ) : (
         <>
-        <div className="flex flex-col flex-wrap  items-center mb-16 lg:mb-0 justify-center bg-background  ">
-        <div className="w-full max-w-2xl p-4 space-y-6">
-          <div className="bg-white shadow rounded-md p-4">
-            <div className="mx-2">
-              <label
-                htmlFor="buildings"
-                className="block text-sm font-medium text-gray-700"
-              >
-                เลือกอาคาร :
-              </label>{" "}
-              <select
-                className="border p-2 rounded mb-4"
-                onChange={handleBuildingChange}
-              >
-                <option value="" disabled selected>
-                  เลือกอาคาร
-                </option>
-                {buildings.map((b, index) => (
-                  <option key={index} value={b.id}>
-                    {b.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
+          <div className="flex flex-col flex-wrap  items-center mb-16 lg:mb-0 justify-center bg-background  ">
+            <div className="w-full max-w-2xl p-4 space-y-6">
+              <div className="bg-white shadow rounded-md p-4">
+                <div className="mx-2">
+                  <label
+                    htmlFor="buildings"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    เลือกอาคาร :
+                  </label>{" "}
+                  <select
+                    className="border p-2 rounded mb-4"
+                    onChange={handleBuildingChange}
+                  >
+                    <option value="" disabled selected>
+                      เลือกอาคาร
+                    </option>
+                    {buildings.map((b, index) => (
+                      <option key={index} value={b.id}>
+                        {b.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <Table className=" md:w-full">
+                    <TableHead>
+                      <TableRow>
+                        <TableHeaderCell> เลขที่</TableHeaderCell>
+                        <TableHeaderCell>ชื่อร้านค้า </TableHeaderCell>
+                        <TableHeaderCell>ตั้งค่า</TableHeaderCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {buildings &&
+                        selectedBuilding?.Restaurant.map((restaurant: any) => (
+                          <TableRow key={restaurant.id}>
+                            <TableCell>{restaurant.id}</TableCell>
+                            <TableCell>{restaurant.name}</TableCell>
+                            <TableCell>
+                              <button className="border rounded px-2 bg-indigo-500 text-center text-white">
+                                <a href={"setting/table/" + restaurant.id}>
+                                  ดูข้อมูล
+                                </a>
+                              </button>
+                              <button
+                                className="border px-2 mx-1 rounded  bg-secondary text-white"
+                                onClick={() => handleEditClick(restaurant)}
+                              >
+                                แก้ไข
+                              </button>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                    </TableBody>
+                  </Table>
+                </div>
 
-            <Table className=" md:w-full">
-              <TableHead>
-                <TableRow>
-                  <TableHeaderCell> เลขที่</TableHeaderCell>
-                  <TableHeaderCell>ชื่อร้าค้า </TableHeaderCell>
-                  <TableHeaderCell>ตั้งค่า</TableHeaderCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {buildings &&
-                  selectedBuilding?.Restaurant.map((restaurant) => (
-                    <TableRow key={restaurant.id}>
-                      <TableCell>{restaurant.id}</TableCell>
-                      <TableCell>{restaurant.name}</TableCell>
-                      <TableCell>
-                        <button  
-                                                      className="border px-2 rounded  bg-secondary text-white"
-                        onClick={() => handleEditClick(restaurant)}>
-                          แก้ไข
-                        </button>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-              </TableBody>
-            </Table>
-            </div>
-
-            <Transition appear show={isOpen} as={Fragment}>
-              <Dialog as="div" className="relative z-10" onClose={closeModal}>
-                <Transition.Child
-                  as={Fragment}
-                  enter="ease-out duration-300"
-                  enterFrom="opacity-0 scale-95"
-                  enterTo="opacity-100 scale-100"
-                  leave="ease-in duration-200"
-                  leaveFrom="opacity-100 scale-100"
-                  leaveTo="opacity-0 scale-95"
-                >
-                  <div className="fixed inset-0 bg-black/25" />
-                </Transition.Child>
-
-                <div className="fixed  inset-0 overflow-y-auto">
-                  <div className="flex min-h-full items-center justify-center p-4 text-center">
+                <Transition appear show={isOpen} as={Fragment}>
+                  <Dialog
+                    as="div"
+                    className="relative z-10"
+                    onClose={closeModal}
+                  >
                     <Transition.Child
                       as={Fragment}
                       enter="ease-out duration-300"
@@ -188,45 +190,58 @@ export default function Home() {
                       leaveFrom="opacity-100 scale-100"
                       leaveTo="opacity-0 scale-95"
                     >
-                      <Dialog.Panel className="w-full h-80 max-w-md transform overflow-hidden rounded-2xl bg-background p-6 text-left align-middle shadow-xl transition-all">
-                        <Dialog.Title
-                          as="h3"
-                          className="text-lg font-medium leading-6  text-gray-900"
-                        >
-                          <div>
-                            แก้ไขร้านค้า เลขที่ {selectedRestaurant?.name}
-                          </div>
-                        </Dialog.Title>
-
-                        <div className="mt-5 justify-center text-center">
-                            <input
-                              className="border p-2 rounded mb-4"
-                              type="text"
-                              value={newName}
-                              onChange={handleNameChange}
-                            />
-                            <br />
-                            <button
-                              className="border p-2 rounded mb-4 bg-indigo-500 text-white"
-                              onClick={handleConfirmClick}
-                            >
-                              ยืนยัน
-                            </button>
-                        </div>
-                      </Dialog.Panel>
+                      <div className="fixed inset-0 bg-black/25" />
                     </Transition.Child>
-                  </div>
-                </div>
-              </Dialog>
-            </Transition>
+
+                    <div className="fixed  inset-0 overflow-y-auto">
+                      <div className="flex min-h-full items-center justify-center p-4 text-center">
+                        <Transition.Child
+                          as={Fragment}
+                          enter="ease-out duration-300"
+                          enterFrom="opacity-0 scale-95"
+                          enterTo="opacity-100 scale-100"
+                          leave="ease-in duration-200"
+                          leaveFrom="opacity-100 scale-100"
+                          leaveTo="opacity-0 scale-95"
+                        >
+                          <Dialog.Panel className="w-full h-80 max-w-md transform overflow-hidden rounded-2xl bg-background p-6 text-left align-middle shadow-xl transition-all">
+                            <Dialog.Title
+                              as="h3"
+                              className="text-lg font-medium leading-6  text-gray-900"
+                            >
+                              <div>
+                                แก้ไขร้านค้า  {selectedRestaurant?.name}
+                              </div>
+                            </Dialog.Title>
+
+                            <div className="mt-5 justify-center text-center">
+                              <input
+                                className="border p-2 rounded mb-4"
+                                type="text"
+                                value={newName}
+                                onChange={handleNameChange}
+                              />
+                              <br />
+                              <button
+                                className="border p-2 rounded mb-4 bg-indigo-500 text-white"
+                                onClick={handleConfirmClick}
+                              >
+                                ยืนยัน
+                              </button>
+                            </div>
+                          </Dialog.Panel>
+                        </Transition.Child>
+                      </div>
+                    </div>
+                  </Dialog>
+                </Transition>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <Navbottom />    
-      </>
+          <Navbottom />
+        </>
       )}
-      
     </div>
-    
   );
-}
+};
+export default Home;

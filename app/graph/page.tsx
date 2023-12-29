@@ -214,6 +214,9 @@ const sumMea = totalYearlyBillData.reduce((sum, item) => sum + item["คิด�
                   <p className="text-end text-xs md:text-base">
                   ยอดรวมตามหน่วยโรงเรียน<span className="px-1 md:px-2 underline">{formatNumber(sumSchool)}</span> บาท
                   </p>
+                  <p className="text-end text-xs md:text-base">
+                  ต้นทุนค่าไฟฟ้าคิดเป็นร้อยละ<span className="px-1 md:px-2 underline">{((sumMea/sumSchool)*100).toFixed(2)}</span>%
+                  </p>
                 </Card>
               </div>
             </div>

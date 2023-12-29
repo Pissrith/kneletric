@@ -1,4 +1,4 @@
 const config = {
-    api_path: 'https://fine-tan-coyote-tutu.cyclic.app',
+    api_path: 'https://lucky-gown-lion.cyclic.app',
 };
 export default config;
