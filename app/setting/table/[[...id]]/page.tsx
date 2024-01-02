@@ -54,7 +54,6 @@ export default function UpdateUser({ params }: { params: { id?: string[] } }) {
     fetchData();
   }, []);
   const handleEditClick = (restaurant: any) => {
-    console.log(restaurant);
     setSelectedRestaurant(restaurant);
     setIsOpen(true);
   };
@@ -96,7 +95,8 @@ export default function UpdateUser({ params }: { params: { id?: string[] } }) {
       [e.target.name]: value,
     });
   };
-
+  
+ 
   const handleConfirmClick = async () => {
     try {
       if (formData.Date) {
@@ -127,16 +127,18 @@ export default function UpdateUser({ params }: { params: { id?: string[] } }) {
       console.error(error);
     }
   };
-
-  const handleDelete = async () => {
+ 
+  const handleDelete = async (restaurant: any) => {
     if (window.confirm("Are you sure you want to delete this bill?")) {
       try {
-        const id = selectedRestaurant?.id; // replace this with the actual id
+        console.log(restaurant.id);
+        const id = restaurant?.id; // replace this with the actual id
         const response = await axios.delete(
           `${config.api_path}/deletebill/${id}`
         );
         if (response.status === 200) {
           alert("Bill deleted successfully");
+          window.location.reload();
         }
       } catch (error) {
         console.error("Error:", error);
@@ -201,7 +203,7 @@ export default function UpdateUser({ params }: { params: { id?: string[] } }) {
                         แก้ไข
                       </button>
                       <button
-                        onClick={handleDelete}
+                        onClick={()=>handleDelete(billid)}
                         className="border px-2 mx-1 rounded  bg-primary text-white"
                       >
                         ลบ

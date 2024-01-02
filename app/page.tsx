@@ -118,18 +118,20 @@ export default function Home() {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (!start || !end) {
-      alert("Please enter start");
+    if (!start || !end||!sch||!mea||!date) {
+      alert("กรุณากรอกข้อมูลให้ครบถ้วน");
       return;
     }
     if (end < start) {
       alert("End must be greater than start");
       return;
     }
+  
+
     if (!selectedRestaurant) return;
     const newBill = {
       Restaurantid: selectedRestaurant.id,
-      Date: new Date(),
+      Date: date,
       start,
       sch,
       mea,
@@ -189,7 +191,12 @@ export default function Home() {
     setIsBillopen(true);
     console.log("open");
   }
+  const [date, setDate] = useState(new Date());
 
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value: Date = new Date(e.target.value);
+    setDate(value);
+  };
   return (
     <>
       <div className="h-screen">
@@ -530,6 +537,21 @@ export default function Home() {
                     {selectedRestaurant ? (
                       <form onSubmit={handleSubmit}>
                         <div className="">
+                          
+                        <div className="grid grid-cols-3 mt-2 ">
+                        <label htmlFor="date" className="text-center">
+                              {" "}
+                              วันที่
+                            </label>                          
+                          <input
+                            type="date"
+                            id="Date"
+                            name="Date"
+                            className="col-span-2 mr-10 border border-black rounded-lg text-center"
+
+                            onChange={handleDateChange}
+                          />
+                          </div>
                           <div className="grid grid-cols-3 mt-2 ">
                             <label htmlFor="start" className="text-center">
                               {" "}

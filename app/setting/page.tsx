@@ -110,6 +110,7 @@ const Home = () => {
     setNewName(restaurant.name);
     setIsOpen(true);
   };
+  
   return (
     <div className="bg-background h-screen">
       <Nav />
